@@ -1,7 +1,10 @@
-name: Telegram Test
+name: Daily Mini Coaching
 
 on:
   workflow_dispatch:
+  schedule:
+    - cron: '0 7 * * *'
+      timezone: 'Asia/Tehran'
 
 jobs:
   send-message:
@@ -12,4 +15,13 @@ jobs:
         run: |
           curl -s -X POST "https://api.telegram.org/bot${{ secrets.TELEGRAM_TOKEN }}/sendMessage" \
           -d chat_id="${{ secrets.TELEGRAM_CHAT_ID }}" \
-          --data-urlencode text="سلام زیبا 🌱 این اولین پیام آزمایشی Mini Coaching توست. سیستم با موفقیت وصل شد."
+          --data-urlencode text="زیبا، امروز قرار نیست همه‌چیز را یک‌دفعه درست کنی؛ فقط یک قدم درست بردار.
+
+در ترید، وظیفه تو شکار کردن همه حرکت‌های بازار نیست؛ وظیفه تو این است که فقط وقتی شرایط پلنت کامل شد وارد شوی.
+
+امروز کمتر عجله کن، بیشتر مشاهده کن و طبق پلنت عمل کن.
+
+یک معامله خوب، معامله‌ای نیست که حتماً سود بدهد؛ معامله‌ای است که درست اجرا شده باشد.
+
+امروز فقط یک هدف:
+من به پلنم وفادار می‌مانم."
